@@ -12,7 +12,12 @@
 //add the returned value from iteratee tp myNewArray
 //after looping, return  myNewArray
 function map(array, iteratee){
-
+    let myNewArray = [];
+    for (let i = 0; i < array.length; i++) {
+        let value = iteratee(array[i]);
+        myNewArray.push(value);
+    }
+    return myNewArray;
 }
 
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
@@ -25,7 +30,13 @@ function map(array, iteratee){
 //iteratee will return true or false, if true add the item to myNewArray else do not
 //after looping, return myNewArray
 function filter(array, iteratee){
-
+    let myNewArray = [];
+    for (let i = 0; i < array.length; i++) {
+        if(iteratee(array[i])) {
+            myNewArray.push(array[i]);
+        }
+    }
+    return myNewArray;
 }
 
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
@@ -35,18 +46,25 @@ function filter(array, iteratee){
 //fnc will return true or false, if true return the item 
 //after looping, return null
 function find(theArray, fnc){
-
+    for (let i = 0; i < theArray.length; i++) {
+        if(fnc(theArray[i])) {
+            return theArray[i];
+        } 
+    }
+    return null;
 }
 
 
 //return the last item in theArray
 function findLast(theArray){
-
+    let value = theArray[theArray.length - 1];
+    return value;
 }
 
 //return the first element of the array
 function head(theArray){
-
+    let value = theArray[0];
+    return value;
 }
 
 //create a new array
@@ -54,7 +72,10 @@ function head(theArray){
 //add the item from each loop to the new array
 //return the new array
 function reverse(theArray){
-
+    let newArray = [];
+    for (let i = theArray.length - 1; i > 0; i--) {
+        newArray.push(theArray[i]);
+    }
 }
 
 //create a new array
@@ -62,7 +83,10 @@ function reverse(theArray){
 //add the item from each loop to the new array except the first item
 //return the new array
 function tail(theArray){
-
+    let newArray = [];
+    for (let i = 1; i < theArray.length - 1; i++ ) {
+        newArray.push(theArray[i]);
+    }
 }
 
 //implement the most basic sorting algorithm there is
@@ -76,8 +100,26 @@ function tail(theArray){
 //after each for loop check the variable, if true, continue the while loop
 //if false return theArray
 function sort(theArray){
-
+    let sorted = false;
+    while(sorted == false) {
+        let swapped = false;
+        for(let i = 0; i < theArray.length; i++) {
+            if(theArray[i] > theArray[i + 1]) {
+                let hold = theArray[i];
+                theArray[i] = theArray[i + 1];
+                theArray[i + 1] = hold;
+                swapped = true;
+            } 
+        }
+        if(!swapped) {
+            sorted = true;
+        }
+    }
+    return theArray;
 }
+
+let theArray = [9, 3, 7, 4, 5, 2, 1];
+console.log(sort(theArray));
 
 exports.map = map;
 exports.filter = filter;
