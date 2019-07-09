@@ -29,3 +29,4 @@ console.log(tail(testArray));
 // expected output: [ 5, 9, 3, 10, 19, 7, 35, 90 ]
 
 console.log(sort(testArray));
+// expected output: [ 2, 3, 4, 5, 7, 9, 10, 19, 35, 90 ]
