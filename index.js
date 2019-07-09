@@ -76,6 +76,7 @@ function reverse(theArray){
     for (let i = theArray.length - 1; i > 0; i--) {
         newArray.push(theArray[i]);
     }
+    return newArray;
 }
 
 //create a new array
@@ -87,6 +88,7 @@ function tail(theArray){
     for (let i = 1; i < theArray.length - 1; i++ ) {
         newArray.push(theArray[i]);
     }
+    return newArray;
 }
 
 //implement the most basic sorting algorithm there is
@@ -101,7 +103,7 @@ function tail(theArray){
 //if false return theArray
 function sort(theArray){
     let sorted = false;
-    while(sorted == false) {
+    while(sorted === false) {
         let swapped = false;
         for(let i = 0; i < theArray.length; i++) {
             if(theArray[i] > theArray[i + 1]) {
@@ -117,9 +119,6 @@ function sort(theArray){
     }
     return theArray;
 }
-
-let theArray = [9, 3, 7, 4, 5, 2, 1];
-console.log(sort(theArray));
 
 exports.map = map;
 exports.filter = filter;
